@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8624392852421603193}
   - component: {fileID: 8887409759850127147}
   - component: {fileID: 645704712997234356}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stone
   m_TagString: Stone
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 89a6dd3a5ed414f4589cf4c683724829, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

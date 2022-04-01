@@ -61,3 +61,29 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 89a6dd3a5ed414f4589cf4c683724829, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9356483983ed22d4b94286f1a05d369e, type: 3}
+--- !u!1 &6077884563721084849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 284172262248120495, guid: 9356483983ed22d4b94286f1a05d369e, type: 3}
+  m_PrefabInstance: {fileID: 6316701885348536094}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &3242313501326802997 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8887409759850127147, guid: 9356483983ed22d4b94286f1a05d369e, type: 3}
+  m_PrefabInstance: {fileID: 6316701885348536094}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2394395819137388767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077884563721084849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5873a91bc00dd3e4d82951c4b2272c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 300
+  offset: 0
+  runOnlyOnce: 0
+  renderer: {fileID: 3242313501326802997}

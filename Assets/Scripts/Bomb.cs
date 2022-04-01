@@ -1,22 +1,22 @@
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class Bomb : BaseComponent
 {
-    // Start is called before the first frame update
-    void Start()
+    private EnemyMediator enemyMediator;
+    
+    public void Setup(EnemyMediator enemyMediator)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        this.enemyMediator = enemyMediator;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("OnTriggerEnter2D ");
+        Debug.Log("OnTriggerEnter2D ");       
+        if (other.CompareTag("Farmer"))enemyMediator.Notify(this,"Farmer");
+        if (other.CompareTag("Dog"))enemyMediator.Notify(this,"Dog");
+        Destroy(gameObject);
     }
+    
+    
 
 }

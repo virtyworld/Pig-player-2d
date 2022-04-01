@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Meta : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   [SerializeField] private EnemyComponent dogPrefab, farmerPrefab;
+   [SerializeField] private Player playerPrefab;
+   [SerializeField] Transform level;
+   [SerializeField] Bomb bombPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   private EnemyComponent dog, farmer;
+   private Player player;
+   private EnemyMediator enemyMediator;
+   
+   private void Start()
+   {
+      dog = Instantiate(dogPrefab,level);
+      farmer = Instantiate(farmerPrefab,level);
+     
+     
+      player = Instantiate(playerPrefab,level);
+      enemyMediator = new EnemyMediator(farmer,dog,player);
+      player.Setup(bombPrefab,enemyMediator);
+      
+   }
 }

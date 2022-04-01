@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
-public class EnemyComponent : MonoBehaviour
+public class EnemyComponent : BaseComponent
 {
     [SerializeField] private float accelerationTime = 3f;
     [SerializeField] private float movespeed = 1;
@@ -12,41 +11,51 @@ public class EnemyComponent : MonoBehaviour
 
     private Vector2 movement;
     private float timeLeft;
+    private bool isDirty,isAttack;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
-        animator.SetFloat("Horizontal",movement.x);
-        animator.SetFloat("Vertical",movement.y);
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetBool("isAttack",isAttack);
         Move();
     }
-    
+
     private void OnCollisionEnter2D(Collision2D other)
     {
-        
-        if (other.transform.name=="DownBorder")  movement = Vector2.up;
-        if (other.transform.name=="UpBorder")  movement = Vector2.down;
-        if (other.transform.name=="LeftBorder")  movement = Vector2.right;
-        if (other.transform.name=="RightBorder")  movement = Vector2.left;
+        if (other.transform.name == "DownBorder") movement = Vector2.up;
+        if (other.transform.name == "UpBorder") movement = Vector2.down;
+        if (other.transform.name == "LeftBorder") movement = Vector2.right;
+        if (other.transform.name == "RightBorder") movement = Vector2.left;
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isAttack = true;
+            Attack();
+        }
+    }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player")) isAttack = false;
+    }
+
 
     private void Move()
     {
         timeLeft -= Time.deltaTime;
-        if(timeLeft <= 0)
+        if (timeLeft <= 0)
         {
-            NewDirectoryMove();
+            NewDirectoryToMove();
         }
+
         transform.Translate(movement * (movespeed * Time.deltaTime));
     }
 
-    private void NewDirectoryMove()
+    private void NewDirectoryToMove()
     {
         int random = Random.Range(0, 3);
         if (random == 0) movement = Vector2.up;
@@ -55,5 +64,36 @@ public class EnemyComponent : MonoBehaviour
         if (random == 3) movement = Vector2.right;
 
         timeLeft += accelerationTime;
+    }
+
+    private void Attack()
+    {
+        StartCoroutine(Hit());
+    }
+    
+    private IEnumerator Hit(){
+        isAttack = true;
+        animator.SetBool("isAttack",true);
+      
+        
+        yield return new WaitForSeconds(1);
+        mediator.Notify(this,"Player");
+        animator.SetBool("isAttack",false);
+        isAttack = false;
+        
+    }
+
+    public void SoDirty()
+    {
+        if (isDirty) Die();
+        isDirty = true;
+        animator.SetBool("isDirty",true);
+        animator.SetLayerWeight(1,1);
+    }
+
+    private void Die()
+    {
+        if (isDirty) Destroy(gameObject);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

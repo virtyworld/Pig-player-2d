@@ -14,9 +14,11 @@ GameObject:
   - component: {fileID: 5161591525657244506}
   - component: {fileID: 19432813511311852}
   - component: {fileID: 745628986131643861}
+  - component: {fileID: 5992242310220891328}
+  - component: {fileID: 6739172215808455489}
   m_Layer: 9
   m_Name: Dog
-  m_TagString: Untagged
+  m_TagString: Dog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 1480917699468073914, guid: 3d179c97f1ff0f749823d1ba7a1d6109, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -167,3 +169,35 @@ MonoBehaviour:
   accelerationTime: 4
   movespeed: 3
   animator: {fileID: 5161591525657244506}
+--- !u!58 &5992242310220891328
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741224294389333946}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7442857
+--- !u!114 &6739172215808455489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741224294389333946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5873a91bc00dd3e4d82951c4b2272c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 300
+  offset: 0
+  runOnlyOnce: 0
+  renderer: {fileID: 8723704466235742346}

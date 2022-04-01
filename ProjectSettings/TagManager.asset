@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Stone
   - Wall
+  - Farmer
+  - Dog
   layers:
   - Default
   - TransparentFX
@@ -15,10 +17,10 @@ TagManager:
   - UI
   - 
   - level
-  - 
+  - Player
   - Enemy
   - 
-  - 
+  - Bomb
   - 
   - 
   - 
