@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2364001317480299341}
   - component: {fileID: 1551794236937646165}
   - component: {fileID: 3669310698257617936}
+  - component: {fileID: 3595496099616469624}
   m_Layer: 8
   m_Name: Pig
   m_TagString: Player
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4751641604475583424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9, y: 0, z: 0}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,18 +49,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.13641487, y: -0.50986886}
+  m_Offset: {x: -0.12089753, y: -0.26547146}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.9628571, y: 1.4342858}
-    newSize: {x: 1.9628571, y: 1.4342858}
+    oldSize: {x: 1.2490909, y: 0.9127273}
+    newSize: {x: 1.374, y: 1.004}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.59541726, y: 0.41454816}
+  m_Size: {x: 0.43248606, y: 0.3524791}
   m_EdgeRadius: 0
 --- !u!50 &8966850874240721890
 Rigidbody2D:
@@ -141,15 +142,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -5792511334730316588, guid: c7c2839481eb62a4280288d05ecf7dce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.9628571, y: 1.4342858}
+  m_Size: {x: 1.374, y: 1.004}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &3669310698257617936
@@ -164,6 +165,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56df8b69ab024a4495744a948aad491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 10
+  moveSpeed: 1
   animator: {fileID: 2364001317480299341}
   rb: {fileID: 8966850874240721890}
+--- !u!114 &3595496099616469624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751641604475583424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5873a91bc00dd3e4d82951c4b2272c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 300
+  offset: 0
+  runOnlyOnce: 0
+  renderer: {fileID: 1551794236937646165}

@@ -11,7 +11,6 @@ public class Bomb : BaseComponent
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("OnTriggerEnter2D ");       
         if (other.CompareTag("Farmer"))enemyMediator.Notify(this,"Farmer");
         if (other.CompareTag("Dog"))enemyMediator.Notify(this,"Dog");
         Destroy(gameObject);

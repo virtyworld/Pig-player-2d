@@ -1,50 +1,70 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class Player : BaseComponent
 {
-    [SerializeField] private float movespeed = 1;
+    [SerializeField] private float moveSpeed = 1;
     [SerializeField] private Animator animator;
-    [SerializeField] private Rigidbody2D rb;
 
     private Vector2 movement;
-    private Bomb bomb,bombPrefab;
+    private Bomb bomb, bombPrefab;
     private EnemyMediator enemyMediator;
-    
-    public void Setup(Bomb bombPrefab,EnemyMediator enemyMediator)
+
+    public void Setup(Bomb bombPrefab, EnemyMediator enemyMediator)
     {
         this.bombPrefab = bombPrefab;
         this.enemyMediator = enemyMediator;
     }
-   
-   
+
     void Update()
     {
         Move();
-        Attack();
-        animator.SetFloat("Horizontal",movement.x);
-        animator.SetFloat("Vertical",movement.y);
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+
+        if (Input.touchCount > 0)
+        {
+            if (Input.GetTouch(0).tapCount == 2)
+            {
+                Attack();
+            }
+        }
     }
 
-   
+
     private void Move()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-       
-        rb.MovePosition(rb.position + movement * (movespeed*Time.deltaTime));
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 cursor = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+                -Camera.main.transform.position.z));
+            cursor.z = 0f;
+
+            StopAllCoroutines();
+            StartCoroutine(MoveTo(transform.position, cursor, moveSpeed));
+        }
+    }
+
+    IEnumerator MoveTo(Vector2 start, Vector2 destination, float speed)
+    {
+        while ((start - destination).magnitude > 0.01f)
+        {
+            movement = destination - start;
+            transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
+            yield return null;
+        }
     }
 
     private void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            bomb = Instantiate(bombPrefab,transform.parent);
-            bomb.transform.position = transform.position;
-            bomb.Setup(enemyMediator);
-        }
+        bomb = Instantiate(bombPrefab, transform.parent);
+        bomb.transform.position = transform.position;
+        bomb.Setup(enemyMediator);
     }
-    
+
     public void Die()
     {
         Destroy(gameObject);
